@@ -1,6 +1,8 @@
 import User from "../model/User.js";
 import bcrypt from "bcryptjs";
 import axios from 'axios';
+import nodemailer from 'nodemailer';
+
 
 export const signup = async (req, res, next) => {
 
@@ -50,4 +52,89 @@ export const signup = async (req, res, next) => {
     
   };
   
+  let savedOTPS = {};
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'kuldeep.ewp@gmail.com',
+    pass: 'etruxeaawlxjkjkp',
+  },
+});
+
+export const sendOtp = async (req,res) =>{
+  const { email } = req.body;
+  const digits = '0123456789';
+  const limit = 4;
+  let otp = '';
+
+  for (let i = 0; i < limit; i++) {
+    otp += digits[Math.floor(Math.random() * 10)];
+  }
+
+  const options = {
+    from: 'kuldeep.ewp@gmail.com',
+    to: email,
+    subject: 'Testing node emails',
+    html: `<p>Enter the otp: ${otp} to verify your email address</p>`,
+  };
+
+  transporter.sendMail(options, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send("couldn't send");
+    } else {
+      savedOTPS[email] = otp;
+      setTimeout(() => {
+        delete savedOTPS.email;
+      }, 60000);
+      res.send('sent otp');
+    }
+  });
+
+
+};
+
+export  const verifyOtp = async(req,res) =>{
+  const { otp: otpReceived, email } = req.body;
+
+  if (savedOTPS[email] === otpReceived) {
+    res.send('Verified');
+  } else {
+    res.status(500).send('Invalid OTP');
+  }
+
+};
+
+
+export const forgotPassword = async(req,res)=>{
+   
+  try{
+   const {email,newpassword} = req.body;
+   const  user = await User.findOne({email});
+   if(!user){
+      console.log("hello");
+     return res.status(400).json({ message: ' Invalid user' });
+   }
+   
+   if (!newpassword) {
+    // console.log("hello");
+     return res.status(400).json({ message: 'New password is required' });
+   }
+     
+   
+   const hashedPass =   await bcrypt.hash(newpassword,10);
   
+  await User.findByIdAndUpdate(user._id, { password: hashedPass });
+    //  user.password = hashedPass;
+    // await user.save();
+  return   res.json({ message: 'Password reset successful' });
+  }
+  catch(err){
+   console.log('Error in reset password route:', err);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
