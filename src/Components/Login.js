@@ -1,5 +1,4 @@
 import {React, useState, useEffect } from 'react'
-import { useStyles } from "./Login_Signup_styles";
 import { Box, Grid, Typography, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -9,6 +8,9 @@ import { Theme } from "./Theme";
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useStyles } from "./Login_Signup_styles";
+
 
 
 
@@ -109,7 +111,6 @@ function Login() {
             <CssBaseline />
             <Box
               sx={{
-                // marginTop: 1,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -155,7 +156,7 @@ function Login() {
                           color: "default",
                           [`&.${inputLabelClasses.shrink}`]: {
                             // set the color of the label when shrinked (usually when the TextField is focused)
-                            color: Theme.colors.tealGreen
+                            color: Theme.colors.blueColor
                           }
                         }
                       }}
@@ -182,7 +183,7 @@ function Login() {
                           color: "default",
                           [`&.${inputLabelClasses.shrink}`]: {
                             // set the color of the label when shrinked (usually when the TextField is focused)
-                            color: Theme.colors.tealGreen
+                            color: Theme.colors.blueColor
                           }
                         }
                       }}

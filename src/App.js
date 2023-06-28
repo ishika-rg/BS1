@@ -17,7 +17,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-        <Route path="/" element={<Navigate replace to="/books" />} />
+        <Route path="/" exact element={<Navigate replace to="/signup" />} />
 
           <Route exact path = '/add_book' element = {<AddBook />} />
           <Route exact path = '/books' element = {<Books />} />

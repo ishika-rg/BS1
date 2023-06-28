@@ -7,6 +7,11 @@ export const Theme = {
       lightBg2: 'rgb(216, 228, 188)',
       bgColor: 'rgb(249 255 236)',
       offWhite : 'rgba(0, 0, 0, 0.04)',
-      formTextColor: 'rgba(99, 92, 94, 1)'
+      formTextColor: 'rgba(99, 92, 94, 1)',
+
+
+      // blueColor : 'rgb(0,49,83)'
+      blueColor : '#232F3D',
+      lightBlue : '#e7feff',
     },
   };

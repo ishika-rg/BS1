@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { useStyles } from "./Login_Signup_styles";
 import { Box, Grid, Typography, Button } from "@mui/material";
 import { Link, useNavigate  } from "react-router-dom";
 import { Theme } from "./Theme";
@@ -13,6 +12,9 @@ import { CssBaseline, TextField, Container } from "@mui/material";
 import { inputLabelClasses } from "@mui/material/InputLabel";
 
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
+import { useStyles } from "./Login_Signup_styles";
+
 
 function Signup() {
   const classes = useStyles();
@@ -94,50 +96,6 @@ function Signup() {
   
 
        
-  //     const { data } = await axios.post('http://localhost:5000', 
-  //     JSON.stringify({
-  //            name, user_name, email, password, c_password : confirm_password}), config
-        
-  //     )
-
-  //     console.log({data})
-
-   
-
-
-  //  if(validForm()){
-
-   
-  //   const{name, user_name, email, password, confirm_password} = user;   //this gives value user.name....
-  //   const res = await fetch("/signup", {
-  //     method : 'POST',
-  //     headers :{
-  //       'Content-Type' : 'application/json'
-  //     },
-  //     body : JSON.stringify({
-  //       name, user_name, email, password, c_password : confirm_password
-  //     })
-  //   })
-
-  //   try{
-  //   const data = await res.json();
-  //   console.log(data.response)
-  //   if(data.status === '422' || !data){
-  //     window.alert("Registration invalid! ")
-  //     console.log("Registration invlalid")
-
-  //   }
-  //   else{
-  //        window.alert("  Registration successful !")
-  //        navigate("/login");
-
-  //   }
-  // }
-  // catch(err){
-  //   console.log(err)
-  //   window.alert('form not registered!!!')
-  // }
-  //  }
    };
 
   //  validation of form
@@ -213,7 +171,10 @@ function Signup() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ height: "100%" }}
       >
+
+
         <Grid className={classes.signup_left} item xs={6}>
+
           <Box>
             <Typography variant="h3" component="h4" className={classes.title}>
               Welcome Back !
@@ -233,7 +194,12 @@ function Signup() {
               Login
             </Button>
           </Box>
+
+
         </Grid>
+
+
+
         <Grid className={classes.signup_right} item xs={6}>
           <ThemeProvider theme={theme}>
             <ToastContainer/>
@@ -285,7 +251,7 @@ function Signup() {
                             color: "default",
                             [`&.${inputLabelClasses.shrink}`]: {
                               // set the color of the label when shrinked (usually when the TextField is focused)
-                              color: `${Theme.colors.tealGreen}`,
+                              color: `${Theme.colors.blueColor}`,
                             },
                           },
                         }}
@@ -315,7 +281,7 @@ function Signup() {
                             color: "default",
                             [`&.${inputLabelClasses.shrink}`]: {
                               // set the color of the label when shrinked (usually when the TextField is focused)
-                              color: Theme.colors.tealGreen,
+                              color: Theme.colors.blueColor,
                             },
                           },
                         }}
@@ -344,7 +310,7 @@ function Signup() {
                             color: "default",
                             [`&.${inputLabelClasses.shrink}`]: {
                               // set the color of the label when shrinked (usually when the TextField is focused)
-                              color: Theme.colors.tealGreen,
+                              color: Theme.colors.blueColor,
                             },
                           },
                         }}
@@ -374,7 +340,7 @@ function Signup() {
                             color: "default",
                             [`&.${inputLabelClasses.shrink}`]: {
                               // set the color of the label when shrinked (usually when the TextField is focused)
-                              color: Theme.colors.tealGreen,
+                              color: Theme.colors.blueColor,
                             },
                           },
                         }}
@@ -404,7 +370,7 @@ function Signup() {
                             color: "default",
                             [`&.${inputLabelClasses.shrink}`]: {
                               // set the color of the label when shrinked (usually when the TextField is focused)
-                              color: Theme.colors.tealGreen,
+                              color: Theme.colors.blueColor,
                             },
                           },
                         }}

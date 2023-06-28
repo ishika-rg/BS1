@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { Theme } from "./Theme";
 //import imgbg from '../images/bgimg.jpg'
-
+import bg from '../assests/bg1.jpg'
 
 export const useStyles = makeStyles(() => ({
 
@@ -14,18 +14,17 @@ export const useStyles = makeStyles(() => ({
         padding: '4rem !important',
         display:'flex',
         flexDirection: 'column !important',
-        // background: Theme.colors.lightBg,
-        margin: 'auto 0',
+        // background: Theme.colors.lightBlue,
+        margin: '0 auto',
         
         position: 'relative',
         '&::before' : {
             content : '" "',
-            //backgroundImage: `url(${imgbg})`,
+            backgroundImage: `url(${bg})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         opacity: '0.3',
         position: 'absolute',
-        //  zIndex: '-1',
         top: '0',
   left: '0',
   bottom: '0',
@@ -63,13 +62,14 @@ export const useStyles = makeStyles(() => ({
 
     },
     button : {
-        color: `${Theme.colors.tealGreen} !important`,
-        background : Theme.colors.lightBg,
+        // color: `${Theme.colors.offWhite} !important`,
+        color : 'white',
+        background : Theme.colors.blueColor,
         padding: '4px 20px !important',
         borderRadius: '20px !important',
-        borderColor: ` ${Theme.colors.tealGreen} !important `,
+        borderColor: ` ${Theme.colors.blueColor} !important `,
         "&:hover " :{
-            background : `${Theme.colors.tealGreen} !important`,
+            background : `${Theme.colors.blueColor} !important`,
             color: 'white !important',
 
         }
@@ -82,13 +82,13 @@ export const useStyles = makeStyles(() => ({
     },
     dark_button : {
         color: 'white !important' ,
-        background : `${Theme.colors.tealGreen} !important` ,
+        background : `${Theme.colors.blueColor} !important` ,
         padding: '4px 20px !important',
         borderRadius: '20px !important',
-        borderColor: ` ${Theme.colors.tealGreen} !important `,
+        borderColor: ` ${Theme.colors.blueColor} !important `,
         "&:hover " :{
             background : `${Theme.colors.lightBg} !important`,
-            color: `${Theme.colors.tealGreen} !important`,
+            color: `${Theme.colors.blueColor} !important`,
 
         }
 
@@ -111,7 +111,7 @@ export const useStyles = makeStyles(() => ({
                 borderColor: 'default', // - Set the Input border when parent has :hover
             },
             '&.Mui-focused fieldset': { // - Set the Input border when parent is focused 
-                borderColor: Theme.colors.tealGreen,
+                borderColor: Theme.colors.blueColor,
                 background : "transparent"
             },
 
