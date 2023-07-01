@@ -190,12 +190,7 @@ function Login() {
                     />
                   </Grid>
                   
-                  {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
+
                 </Grid>
 
                 <Box className={classes.dark_btn}>
@@ -210,6 +205,8 @@ function Login() {
                     LOGIN
                   </Button>
                 </Box>
+
+                <Link to='/forget_password'>Forget Password</Link>
               </Box>
             </Box>
           </Container>

@@ -8,6 +8,7 @@ import About from './Components/About';
 import BookDetail from './Components/Book/BookDetail'
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Email from './Components/forgetPassword/Email';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
 
           <Route exact path = '/signup' element = {<Signup />} />
           <Route exact path = '/login' element = {<Login />} />
+          <Route exact path = '/forget_password' element = {<Email />} />
+
           
 
 
