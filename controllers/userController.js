@@ -2,8 +2,9 @@ import User from "../model/User.js";
 import bcrypt from "bcryptjs";
 import axios from 'axios';
 import nodemailer from 'nodemailer';
-
-
+import  jwt  from "jsonwebtoken";
+ import authenticate from "../middleware/authenticate.js";
+ 
 export const signup = async (req, res, next) => {
 
     try {
@@ -39,12 +40,25 @@ export const signup = async (req, res, next) => {
           .status(404)
           .json({ message: "user not found with this email please signup " });
       }
+      
       const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
     
       if (!isPasswordCorrect) {
         return res.status(400).json({ message: "Incorrect password" });
       }
-      return res.status(200).json({ message: "Login Successfuly" });
+      const token = await userValid.generateAuthtoken();
+
+      // cookiegenerate
+      res.cookie("usercookie",token,{
+          expires:new Date(Date.now()+9000000),
+          httpOnly:true
+      });
+
+      const result = {
+          userValid,
+          token
+      }
+      return res.status(200).json({ status:201,result });
     }
     catch (err) {
       console.log(err);
@@ -52,6 +66,22 @@ export const signup = async (req, res, next) => {
     
   };
   
+  export const logout = async(req,res) => {
+    try {
+      req.rootUser.tokens =  req.rootUser.tokens.filter((curelem)=>{
+          return curelem.token !== req.token
+      });
+
+      res.clearCookie("usercookie",{path:"/"});
+
+      req.rootUser.save();
+
+      res.status(201).json({status:201})
+
+  } catch (error) {
+      res.status(401).json({status:401,error})
+  }
+  };
   let savedOTPS = {};
 
 const transporter = nodemailer.createTransport({
