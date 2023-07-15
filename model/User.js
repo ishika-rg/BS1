@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 
-const keysecret = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+//const keysecret = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -37,19 +37,20 @@ const UserSchema = new Schema({
     
 });
 
-UserSchema.methods.generateAuthtoken = async function () {
-    try {
-        let token23 = jwt.sign({ _id: this._id }, keysecret, {
-            expiresIn: "1d"
-        });
+// UserSchema.methods.generateAuthtoken = async function () {
+//     try {
+//         let token23 = jwt.sign({ _id: this._id }, keysecret, {
+//             expiresIn: "1d"
+//         });
 
-        this.tokens = this.tokens.concat({ token: token23 });
-        await this.save();
-        return token23;
-    } catch (error) {
-        res.status(422).json(error)
-    }
-}
+//         this.tokens = this.tokens.concat({ token: token23 });
+//         await this.save();
+//         return token23;
+//     } catch (error) {
+//         res.status(422).json(error)
+//     }
+// }
+
 export default mongoose.model("User",UserSchema);
 
 

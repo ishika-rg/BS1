@@ -2,8 +2,8 @@ import User from "../model/User.js";
 import bcrypt from "bcryptjs";
 import axios from 'axios';
 import nodemailer from 'nodemailer';
-import  jwt  from "jsonwebtoken";
- import authenticate from "../middleware/authenticate.js";
+//import  jwt  from "jsonwebtoken";
+ //import authenticate from "../middleware/authenticate.js";
  
 export const signup = async (req, res, next) => {
 
@@ -66,22 +66,23 @@ export const signup = async (req, res, next) => {
     
   };
   
-  export const logout = async(req,res) => {
-    try {
-      req.rootUser.tokens =  req.rootUser.tokens.filter((curelem)=>{
-          return curelem.token !== req.token
-      });
+  // export const logout = async(req,res) => {
+  //   try {
+  //     req.rootUser.tokens =  req.rootUser.tokens.filter((curelem)=>{
+  //         return curelem.token !== req.token
+  //     });
 
-      res.clearCookie("usercookie",{path:"/"});
+  //     res.clearCookie("usercookie",{path:"/"});
 
-      req.rootUser.save();
+  //     req.rootUser.save();
 
-      res.status(201).json({status:201})
+  //     res.status(201).json({status:201})
 
-  } catch (error) {
-      res.status(401).json({status:401,error})
-  }
-  };
+  // } catch (error) {
+  //     res.status(401).json({status:401,error})
+  // }
+  // };
+  
   let savedOTPS = {};
 
 const transporter = nodemailer.createTransport({
