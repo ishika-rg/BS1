@@ -1,0 +1,22 @@
+/* .App {
+  text-align: center;
+} */
+
+
+*{
+  margin : 0;
+  padding : 0;
+  box-sizing: border-box;
+
+}
+
+
+:root{
+  /* --bgColor : rgb(243, 246, 249); */
+  --bgColor : #f0f0f0;
+  --textColor : #1a2027;
+  --lightTextColor : rgb(62, 80, 96);
+  --blueColor : #232F3D;
+}
+
+
